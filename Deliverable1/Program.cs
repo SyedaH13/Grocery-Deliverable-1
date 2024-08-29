@@ -29,55 +29,72 @@ Chips needs to be restocked
 Goodbye!
  */
 
-//Sell Soda 
-Console.WriteLine("welcome to the restocking tool.");
-Console.WriteLine("How many Sodas have been sold today? 100 are in stock");
-int soldSoda = int.Parse(Console.ReadLine());
-int sodaRestockValue = 100 - soldSoda;
-if (soldSoda <= 100) { 
-    Console.WriteLine("There are " + sodaRestockValue + " sodas left.");
-} else { 
- Console.WriteLine("That value is too high. Stock not adjusted.");
- }
 
-//Sell Chips 
-Console.WriteLine("How many Chips have been sold today? 40 are in stock");
-int soldChips = int.Parse(Console.ReadLine());
-int chipsRestockValue = 40 - soldChips;
-if (soldChips <= 40)
+Console.WriteLine("welcome to the restocking tool.");
+
+//Sell Soda 
+int sodaStock = 100;
+int sodaRestock = 40;
+
+Console.WriteLine("How many Sodas have been sold today? " + sodaStock + " are in stock");
+int soldSoda = int.Parse(Console.ReadLine());
+
+if (soldSoda > sodaStock)
 {
-    Console.WriteLine("There are " + chipsRestockValue + " chips left.");
+    Console.WriteLine("That value is too high. Stock not adjusted.");
 }
 else
 {
+    sodaStock -= soldSoda;
+    Console.WriteLine("There are " + sodaStock + " sodas left.");
+}
+
+
+//Sell Chips 
+int chipsStock = 40;
+int chipsRestock = 20;
+
+Console.WriteLine("How many Chips have been sold today? " + chipsStock + " are in stock");
+int soldChips = int.Parse(Console.ReadLine());
+
+if (soldChips > chipsStock)
+{
     Console.WriteLine("That value is too high. Stock not adjusted.");
+}
+else
+{
+    chipsStock -= soldChips;
+    Console.WriteLine("There are " + chipsStock + " chips left.");
 }
 
 //Sell Candy 
-Console.WriteLine("How much much candy has been sold today? 60 are in stock");
+int candyStock = 60;
+int candyRestock = 40;
+
+Console.WriteLine("How much much candy has been sold today? " + candyStock + " are in stock");
 int soldCandy = int.Parse(Console.ReadLine());
-int CandyRestockValue = 60 - soldCandy;
-if (soldCandy <= 60)
-{
-    Console.WriteLine("There are " + CandyRestockValue + " Candies left.");
-}
-else
+if (soldCandy > candyStock)
 {
     Console.WriteLine("That value is too high. Stock not adjusted.");
 }
+else
+{
+    candyStock -= soldCandy;
+    Console.WriteLine("There are " + candyStock + " Candies left.");
+}
 
 
-if (soldSoda >= 60 && soldSoda<= 100)
+if (sodaStock <= sodaRestock)
 {
     Console.WriteLine("Sodas need to be restocked!");
 }
 
-if (soldChips >= 20 && soldChips <= 40)
+if (chipsStock <= chipsRestock)
 {
     Console.WriteLine("Chips need to be restocked!");
 }
 
-if (soldCandy >= 20 && soldCandy <= 60)
+if (candyStock <= candyRestock)
 {
     Console.WriteLine("Candies need to be restocked!");
 }
